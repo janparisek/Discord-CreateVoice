@@ -11,10 +11,10 @@
 	"author": "NKN1396",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^11.3.2"
+		"discord.js": "^14.0.3"
 	},
 	"engines": {
-		"node": "^10.0.0"
+		"node": "^16.9.0"
 	},
 	"devDependencies": {
 		"standard": "^17.0.0"
