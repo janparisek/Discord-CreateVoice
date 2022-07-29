@@ -4,7 +4,9 @@
 	"description": "A discord.js bot for creating custom voice channels.",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "node .",
+		"lint": "standard",
+		"test": "npm run lint && npm run start"
 	},
 	"author": "NKN1396",
 	"license": "MIT",
@@ -13,5 +15,8 @@
 	},
 	"engines": {
 		"node": "^10.0.0"
+	},
+	"devDependencies": {
+		"standard": "^17.0.0"
 	}
 }
