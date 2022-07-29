@@ -1,4 +1,4 @@
-[
+const config = [
 	{
 		"message": "446409003136712726",
 		"channel": "414617785415630855",
@@ -19,3 +19,5 @@
 		]
 	}
 ]
+
+export default config
