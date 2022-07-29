@@ -1,7 +1,10 @@
-#Dependencies
+# Dependencies
 node_modules
-old
 
-#Private stuff
+# Legacy
 config.json
 token.json
+
+# Private stuff
+config.mjs
+token.mjs
