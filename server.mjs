@@ -20,28 +20,28 @@ bot.on('message', (message) => {
   }
 
   message.guild.createChannel(
-		`Talk ${message.member.displayName}`,
-		'voice',
-		[
-		  {	// make creator of channel owner (aka gib perms)
-		    type: 'member',
-		    id: message.member.id,
-		    allow: 17825808
-		  },
-		  {	// hide for everyone temporarily so the channel list doesn't fucking earthquake like a diabetic after downing 3 monsters - this is a permament temporary workaround until D.JS v12 gets released
-		    type: 'role',
-		    id: message.guild.defaultRole,
-		    deny: 1024
-		  }
-		],
-		(`Created by ${message.member.displayName} via /create command`)
+    `Talk ${message.member.displayName}`,
+    'voice',
+    [
+      { // make creator of channel owner (aka gib perms)
+        type: 'member',
+        id: message.member.id,
+        allow: 17825808
+      },
+      { // hide for everyone temporarily so the channel list doesn't fucking earthquake like a diabetic after downing 3 monsters - this is a permament temporary workaround until D.JS v12 gets released
+        type: 'role',
+        id: message.guild.defaultRole,
+        deny: 1024
+      }
+    ],
+    (`Created by ${message.member.displayName} via /create command`)
   )
     .catch(error => console.log(error))
     .then(channel => {
       deleteEmptyChannelAfterDelay(channel)
       channel.setParent(config[0].category)
         .catch(error => console.log(error))
-        .finally(function () {	// move channel in voice category
+        .finally(function () { // move channel in voice category
           channel.setPosition(message.guild.channels.get(config[0].category).children.size - config[0].position)
             .catch(error => console.log(error))
             .finally(function () { // move channel to correct position
