@@ -1,16 +1,20 @@
-# CreateVoice
-A discord.js bot for creating custom voice channels.
+# Discord-CreateVoice
+A discord.js bot for creating on-demand voice channels.
+
 ## Features
-1. Creates a new voice channel on command (default: `/create`)
-1. User gets perms for their channel
-1. Channel automatically gets deleted after being empty for too long
-1. Channel spawns in set category
+* Create new voice channels with `/create`
+* Users get perms for their channel
+* Channels get deleted after being empty for too long
+* Channel category can be set
+
 ## Setup
-The bot is exclusively configured through .json files.
 ### Token
-Provide your token to the token.json file.
+Provide your token to the `token.mjs` file.
+
 ### Configuration
-The bot offers unique settings for each guild. Settings are provided as an object in an array:
+Configuration can be done through the `config.mjs` file.
+This is done on a per-guild basis.
+Settings are provided as an object in an array:
 ```javascript
 {
   "guild": "446409003136712726",
@@ -19,7 +23,7 @@ The bot offers unique settings for each guild. Settings are provided as an objec
   "ttl": 120
 }
 ```
-**Guild**: ID of the guild  
-**Category**: ID of the category (parent) the channels will be put in  
-**Position**: The spawn position of the new channel (counted from below)  
-**TTL**: Time to live (in seconds) before the channel gets deleted
+* **guild**: ID of the guild  
+* **category**: ID of the category (parent) the channels will be spawned in. Leave empty for guild default category.  
+* **position**: The spawn position of the new channel (counted from below)  
+* **ttl**: Time to live (in seconds) before the channel gets deleted automatically

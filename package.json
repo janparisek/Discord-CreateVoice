@@ -1,7 +1,7 @@
 {
 	"name": "discord_create-voice",
-	"version": "1.0.0",
-	"description": "A discord.js bot for creating custom voice channels.",
+	"version": "2.0.0",
+	"description": "A discord.js bot for creating on-demand voice channels.",
 	"main": "index.js",
 	"scripts": {
 		"start": "node .",
