@@ -1,23 +1,33 @@
+import { ChannelType, OverwriteType, PermissionFlagsBits } from 'discord.js'
+
 async function handleInteraction (interaction) {
-  // check if message starts with "/create"
-  if (!message.content.startsWith('/create')) return
-  if (!message.member) return
-  let test
-  for (const bundle of config) {
-    if (bundle.guild == message.guild.id) {
-      test = bundle
-      break
-    }
+  // Check interaction
+  if (!interaction.isChatInputCommand()) return
+  if (interaction.commandName !== 'create') return
+
+  // Check if interaction was used in guild
+  const guild = interaction.guild
+  if (guild === undefined) return
+
+  // Checks done, create channel
+  const channelName = undefined ?? `Talk ${interaction.member}`
+  const memberPerms = {
+    id: interaction.member.id,
+    type: OverwriteType.Member,
+    allow: [PermissionFlagsBits.ManageChannels, PermissionFlagsBits.MoveMembers]
   }
+  const channelOptions = {
+    name: channelName,
+    type: ChannelType.GuildVoice,
+    permissionOverwrites: [memberPerms]
+  }
+  await guild.channels.create(channelOptions)
 
   message.guild.createChannel(
     `Talk ${message.member.displayName}`,
     'voice',
     [
       { // make creator of channel owner (aka gib perms)
-        type: 'member',
-        id: message.member.id,
-        allow: 17825808
       },
       { // hide for everyone temporarily so the channel list doesn't fucking earthquake like a diabetic after downing 3 monsters - this is a permament temporary workaround until D.JS v12 gets released
         type: 'role',
